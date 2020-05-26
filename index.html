@@ -5,11 +5,8 @@
 <meta name="viewpoint" content="width= device-width, initial-scale=1, maximum-scale=1" />
 <title>Chi's website</title>
 <style type="text/css">
-.banner{
-    width:100%; padding:5px; background-color:#9accc4; color:white; font:微軟正黑體;text-align: center;
-}
 .content{
-    width:960px;margin-left: auto; margin-right: auto; margin-top: 32px; margin-bottom: 32px ;
+    width:960px; margin-left: auto; margin-right: auto; margin-top: 32px; margin-bottom: 32px ;
     padding: 2%; background-color: white; 
     box-shadow:0px 0px 9px rgb(226, 226, 226); border-radius: 10px;
 }
@@ -23,43 +20,47 @@ hr.style-one {
 h2.style{
     margin-bottom: 10px;
 }
-@media screen and (min-width: 400px) and (max-width: 700px) {
-    .banner{
-    width:100%; padding:5px; background-color:#9accc4; color:white; font:微軟正黑體;font-size:medium; text-align: center;
-    }
-    .content{
-    width:90% ;margin-left: auto; margin-right: auto; margin-top: 5%; margin-bottom: 5% ;
-    padding: 2%; background-color: white; 
-    box-shadow:0px 0px 9px rgb(226, 226, 226); border-radius: 10px;
+
+.box{background-color:turquoise;}
+.button{
+  border-radius: 10px; border:1px solid teal; padding: 5px;
+  width:100px;
+  text-align: center;
+}
+.button:hover{
+  background-color: teal;
+}
+@media screen and (max-width: 960px) {
+    .content{width: 200px;}
+    .box{background-color:red;}
+
 }
 </style>
 </head>
-<body style="margin:0px; background-color:#eeeeee">
-<div class="banner">Chi's First Website</div>
-
+<body style="background-color:#eeeeee">
 <div class="content">
     <div>
-        <h1>Liao Wen-Chiy (廖文麒)</h1>
+        <h1><span>Liao Wen-Chiy</span>  <span>廖文麒</span> </h1>
         <a href= "http://www.facebook.com/wenchiy.liao" target="_blank">
-            <span style="border-radius: 2px; border:1px solid teal;">Facebook</span></a>
+            <span class="button" >Facebook</span></a>
         twitter:<br >
         <hr class="style-one"/>
         <h2 class="style">Education</h2>
-        National Taiwan University, Dept. International Bussiness (2018)
+        <span>Taiwan University, Dept. International Bussiness (2018)</span>
         <hr class="style-one"/>
         <h2 class="style">Work Experience</h2>
-        Research Assistance, NTU (2019-2020)<br>
+        <span>Research Assistance, NTU (2019-2020)<br></span>
         <hr class="style-one"/>
         <h2 class="style">Extracurricular Activities</h2>
-        Short Film Director (2019-2020)<br>
+        <span>Short Film Director (2019-2020)<br>
         Exchange Student, Brussels (2017)<br>
-        Vice Captain, NTUIB Badminton Team (2014)<br>
+        Vice Captain, NTUIB Badminton Team (2014)<br></span>
         <hr class="style-one"/>
 
 
 
 </div>
-
+<div class="box" style="width:100px; height:100px;" ></div>
 
 </body>
 </html>
