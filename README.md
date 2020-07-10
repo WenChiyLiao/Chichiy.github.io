@@ -1,2 +1,2 @@
 # Chichiy.github.io
-mupage
+mypage
