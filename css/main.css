@@ -46,16 +46,10 @@ table {
     border-spacing: 0;
 }
 
-h1{
-  font-size: 50px;
-  font-weight: 600;
-  margin: 2% 0 6% 0;
-  display: inline-block;
-}
-
-h2{font-size: 26px;font-weight: 500;line-height: 30px;margin-top: 26px;}
-h3{font-size: 20px;font-weight: 500;line-height: 30px;margin-top: 18px;}
-h4{font-size: 18px;font-weight: 100;line-height: 20px;margin-bottom: 2px;}
+h1{font-size: 50px; font-weight: 600; margin: 2% 0 6% 0; display: inline-block;}
+h2{font-size: 26px; font-weight: 500; line-height: 30px; margin-top: 26px;}
+h3{font-size: 20px; font-weight: 500; line-height: 30px; margin-top: 18px;}
+h4{font-size: 18px; font-weight: 100; line-height: 20px; margin-bottom: 2px;}
 
 a:link {
   color:#000000;
@@ -130,9 +124,7 @@ body{
 }
 
 @media screen and (max-width: 700px) {
-  h1{
-    font-size: 40px;
-  }
+  h1{font-size: 40px;}
   .container{
     grid-template-columns: none;
     grid-template-areas:
