@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #greenTomato{
+            width: 100px;
+            height: 100px;
+            background-color: var(--tomatoColor);
+            position: relative;
+        }
+
+        #redTomato{
+            background-color: red;
+            width: 100px;
+            height: 0px;
+            position: absolute;
+            bottom:0%
+
+        }
+        :root{--tomatoColor: #00ff00;
+        }
+
+    </style>
+    
+</head>
+<body>
+    <div id="greenTomato">
+    <div id="redTomato"></div><br><br><br><br>
+    <div id="display">25 : 00</div>
+    <br> 
+    <button type="button" id="minus5">-</button>
+    <button type="button" id="start">start</button>
+    <button type="button" id="plus5">+</button>
+    <div id="try"></div>
+
+
+<script type="text/javascript">
+
+    //preset
+        var time = 25;
+    
+        var display = document.getElementById("display");
+        var plus5 = document.getElementById("plus5");
+        var minus5 = document.getElementById("minus5");
+        plus5.onclick = function(){changeTime(1);};
+        minus5.onclick = function(){changeTime(0);};
+        
+    //input time 
+        function changeTime(par){   
+            if (par == 1 ){time += 5;}
+            else {time -= 5;}
+            display.innerHTML = time + " : 00";
+            console.log(time);
+        }
+    //countdown 
+        var start = document.getElementById('start');
+        start.onclick= function(){timer(time);};
+            function timer(min){
+            var sec = 0;
+            var duration = min*60;
+            var count = 0;
+            var col = 0;
+            var timeoutId = setInterval(countdown, 1000);
+            var height = 0;    
+    
+    
+            function countdown(){
+            //time calculation
+            if (sec == 0){
+                min -= 1;
+                sec = 60;
+            }    
+            sec -= 1;
+            count ++;
+            //height = count / duration * 100;
+            col = 120 * (1- count/duration);
+    
+            //display result
+            display.innerHTML = min + " : " + sec;
+    
+            //change color
+            //document.getElementById("redTomato").style.height = height +  "%";
+            document.documentElement.style.setProperty('--tomatoColor', 'hsl(' + col +',100%,50%)');
+    
+            //stop countdown
+            if (min + sec == 0) {
+                clearInterval(timeoutId);
+            }
+            }
+            }
+    
+            
+        </script>
+    </body>
+</html>
