@@ -24,6 +24,9 @@
         :root{--tomatoColor: #00ff00;
         }
 
+        .hide{
+            display: none;
+        }
     </style>
     
 </head>
@@ -33,67 +36,90 @@
     <div id="display">25 : 00</div>
     <br> 
     <button type="button" id="minus5">-</button>
-    <button type="button" id="start">start</button>
+    <button type="button" id="start">start</button> 
+    <button type="button" id="stop" class="hide">stop</button>
     <button type="button" id="plus5">+</button>
     <div id="try"></div>
 
 
 <script type="text/javascript">
 
-    //preset
-        var time = 25;
-    
-        var display = document.getElementById("display");
-        var plus5 = document.getElementById("plus5");
-        var minus5 = document.getElementById("minus5");
-        plus5.onclick = function(){changeTime(1);};
-        minus5.onclick = function(){changeTime(0);};
-        
+//preset
+    var time = 25;
+    var display = document.getElementById("display");
+    document.getElementById("plus5").onclick = function(){changeTime(1);};
+    document.getElementById("minus5").onclick = function(){changeTime(0);};
+    document.getElementById('start').onclick= function(){timer(time);};
+
+//control   
     //input time 
         function changeTime(par){   
-            if (par == 1 ){time += 5;}
-            else {time -= 5;}
+            if (par == 1 ){time += 5;
+            } else {time -= 5;
+            }
             display.innerHTML = time + " : 00";
             console.log(time);
         }
-    //countdown 
-        var start = document.getElementById('start');
-        start.onclick= function(){timer(time);};
-            function timer(min){
-            var sec = 0;
-            var duration = min*60;
-            var count = 0;
-            var col = 0;
+
+    //start-stop switch
+        function toggle(){
+            document.getElementById("stop").classList.toggle("hide");
+            document.getElementById("start").classList.toggle("hide");
+            document.getElementById("plus5").classList.toggle("hide");
+            document.getElementById("minus5").classList.toggle("hide");
+        }
+
+    //timer 
+        function timer(min){
+            var duration = min*60, sec = 0, count = 0, col = 0, height = 0;
+            toggle();
             var timeoutId = setInterval(countdown, 1000);
-            var height = 0;    
-    
-    
+
+        //countdown
             function countdown(){
-            //time calculation
-            if (sec == 0){
-                min -= 1;
-                sec = 60;
-            }    
-            sec -= 1;
-            count ++;
-            //height = count / duration * 100;
-            col = 120 * (1- count/duration);
-    
-            //display result
-            display.innerHTML = min + " : " + sec;
-    
-            //change color
-            //document.getElementById("redTomato").style.height = height +  "%";
-            document.documentElement.style.setProperty('--tomatoColor', 'hsl(' + col +',100%,50%)');
-    
-            //stop countdown
-            if (min + sec == 0) {
-                clearInterval(timeoutId);
-            }
-            }
-            }
-    
+
+            //logic  
+                if (sec == 0){
+                    min -= 1;
+                    sec = 60;
+                }    
+                sec -= 1;
+                count ++;
             
+            //stop countdown
+                if (min + sec == 0) {
+                    clearInterval(timeoutId);
+                }
+
+            //display remaining time
+                if(sec < 10){
+                    display.innerHTML = min + " : 0" + sec;
+                } else {
+                    display.innerHTML = min + " : " + sec;
+                }
+
+            //change color
+                col = 120 * (1- count/duration);
+                document.documentElement.style.setProperty('--tomatoColor', 'hsl(' + col +',100%,50%)');
+            }
+
+        //reset timer, display, color
+            document.getElementById("stop").onclick = function(){reset();}
+            function reset() {
+                if (confirm("你確定要放棄嗎> <？???")) {
+                    clearInterval(timeoutId);
+                    time = 25;
+                    display.innerHTML = time + " : 00";
+                    document.documentElement.style.setProperty('--tomatoColor', 'hsl(120,100%,50%)');
+                    console.log(time+' '+min+' '+sec+" reset");
+                    toggle();
+                } else {}
+            }
+        }
+
+
+
+
         </script>
     </body>
 </html>
