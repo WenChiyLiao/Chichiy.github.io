@@ -3,44 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>TOMATO TIMER</title>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
     <style>
-        #greenTomato{
-            width: 100px;
-            height: 100px;
-            background-color: var(--tomatoColor);
-            position: relative;
+        :root{
+            --tomatoColor: #00ff00;
         }
-
-        #redTomato{
-            background-color: red;
-            width: 100px;
-            height: 0px;
-            position: absolute;
-            bottom:0%
-
+        
+        body{
+            font-family: 'Luckiest Guy', cursive;
+            margin: 0;
+            background-color: #99bb99 ;
         }
-        :root{--tomatoColor: #00ff00;
-        }
-
         .hide{
             display: none;
         }
-    </style>
+        .container{
+            width: 760px;
+            height: 100vh;
+            margin: 0 auto;
+            background-color: hsl(120, 30%, 50%);
+            box-shadow:0px 0px 20px rgba(0,0,0, 0.2), 0px 0px 15px rgba(0,0,0, 0.2);
+        }
+        .header{
+            height: 10%;
+            background-color: hsl(120, 50%, 25%);
+            font-size: 50px;
+            line-height: 1.6;
+            text-align: center;
+            font-family: 'Luckiest Guy', cursive;
+            color: white;
+            vertical-align: middle;
+        }
+        .main{
+            height: 70%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            position: relative;
+
+        }
+
+        .footer{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+        }
+
+        #greenTomato{
+            width: 300px;
+            height: 300px;
+            /*background-color: var(--tomatoColor);*/
+            margin: auto;
+        }
+
+        #display{
+            font-size: 50px;
+            font-family: 'Luckiest Guy', cursive;
+            color: white;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+
+        .button{
+            width:300px;
+            background-color:rgba(0,0,0, 0.3); 
+            text-align: center;
+            font-size: 30px;
+            margin: 5px;
+            padding: 10px;
+            box-shadow:0px 0px 5px rgba(0,0,0, 0.3);
+            border: none;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .button:hover {background-color: rgba(0,0,0, 0.5);}
+        .button:hover {background-color: rgba(0,0,0, 0.5);}
+
+
+        
+
     
+        #start{
+            width: 630px;
+        }
+
+
+    </style>
+
 </head>
 <body>
-    <div id="greenTomato">
-    <div id="redTomato"></div><br><br><br><br>
-    <div id="display">25 : 00</div>
-    <br> 
-    <button type="button" id="minus5">-</button>
-    <button type="button" id="start">start</button> 
-    <button type="button" id="stop" class="hide">stop</button>
-    <button type="button" id="plus5">+</button>
-    <div id="try"></div>
-
+    <div class="container">
+        <div class="header"><span>TOMATO TIMER</span></div>
+        <div class="main">
+            <svg id="greenTomato" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 819.69 710.65"><defs><style>.cls-1{fill:var(--tomatoColor);stroke:#910202;stroke-width:0px;}.cls-1,.cls-2{stroke-miterlimit:10;}.cls-2{fill:#203800;stroke:#203800;stroke-width:7px;}.cls-3{fill:#203800;}</style></defs><title>TOMATO</title><g  data-name="Layer 2"><g data-name="Layer 1"><path class="cls-1" d="M810.73,414.15c-16.79,195.83-184.79,289-400.7,289S62.52,602.09,14.65,430.11C-33.14,258.42,165.35,45.36,413.57,93.24,713.21,56,826.69,228,810.73,414.15Z"/><polygon class="cls-2" points="363.93 121.6 243.37 87.92 379.89 89.69 376.34 34.73 399.39 80.82 482.72 48.91 461.45 86.14 573.15 77.28 470.31 110.97 528.82 123.38 424.21 125.15 351.52 144.65 363.93 121.6"/><polygon class="cls-3" points="414.31 1.77 457.12 0 412.89 104.61 414.31 1.77"/></g></g></svg>
+            <div id="display">25 : 00</div>
+        </div>
+        <div class="footer">
+            <div id="minus5" class="button">-</div>
+            <div id="plus5" class="button">+</div>
+            <div id="start" class="button">start</div> 
+            <div  id="stop" class="hide button">stop</div>
+        </div> 
+    </div>
 
 <script type="text/javascript">
 
@@ -51,7 +122,7 @@
     document.getElementById("minus5").onclick = function(){changeTime(0);};
     document.getElementById('start').onclick= function(){timer(time);};
 
-//control   
+//control panel  
     //input time 
         function changeTime(par){   
             if (par == 1 ){time += 5;
