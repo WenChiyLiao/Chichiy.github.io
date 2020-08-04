@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOMATO TIMER</title>
-    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
     <style>
         :root{
             --tomatoColor: #00ff00;
         }
         
         body{
-            font-family: 'Luckiest Guy', cursive;
+            font-family: 'Staatliches', cursive;
             margin: 0;
             background-color: #99bb99 ;
         }
@@ -29,9 +29,7 @@
             height: 10%;
             background-color: hsl(120, 50%, 25%);
             font-size: 50px;
-            line-height: 1.6;
             text-align: center;
-            font-family: 'Luckiest Guy', cursive;
             color: white;
             vertical-align: middle;
         }
@@ -52,20 +50,19 @@
         }
 
         #greenTomato{
-            width: 300px;
-            height: 300px;
+            width: 60%;
+            height: 6s0%;
             /*background-color: var(--tomatoColor);*/
             margin: auto;
         }
 
         #display{
             font-size: 50px;
-            font-family: 'Luckiest Guy', cursive;
             color: white;
             width: 100%;
             position: absolute;
             bottom: 0;
-            padding: 20px 0;
+            line-height: 2;
             text-align: center;
         }
 
@@ -82,19 +79,35 @@
             color: white;
             text-decoration: none;
             cursor: pointer;
+            transition: 0.3s;
         }
         .button:hover {background-color: rgba(0,0,0, 0.5);}
-        .button:hover {background-color: rgba(0,0,0, 0.5);}
 
-
-        
-
-    
         #start{
             width: 630px;
         }
 
+        @media screen and (max-width: 760px){
+            .container{
+                width: 360px;}
+            .header{
+                font-size: 40px;
+                height: auto;
+                padding: 5px;
+            }
+            .main{
+                height: 66%;
+            }
+            .button{
+                width: 100px;
+            }
+            #start{
+                width: 230px;
+            }
 
+
+        }
+            
     </style>
 
 </head>
@@ -108,7 +121,7 @@
         <div class="footer">
             <div id="minus5" class="button">-</div>
             <div id="plus5" class="button">+</div>
-            <div id="start" class="button">start</div> 
+            <div id="start" class="button">Start</div> 
             <div  id="stop" class="hide button">stop</div>
         </div> 
     </div>
