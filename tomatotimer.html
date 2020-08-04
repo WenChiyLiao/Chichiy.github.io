@@ -51,7 +51,7 @@
 
         #greenTomato{
             width: 60%;
-            height: 6s0%;
+            height: 60%;
             /*background-color: var(--tomatoColor);*/
             margin: auto;
         }
@@ -89,7 +89,7 @@
 
         @media screen and (max-width: 760px){
             .container{
-                width: 360px;}
+                width: 400px;}
             .header{
                 font-size: 40px;
                 height: auto;
@@ -123,6 +123,7 @@
             <div id="plus5" class="button">+</div>
             <div id="start" class="button">Start</div> 
             <div  id="stop" class="hide button">stop</div>
+            <div  id="restart" class="hide button">Try again!</div>
         </div> 
     </div>
 
@@ -138,12 +139,20 @@
 //control panel  
     //input time 
         function changeTime(par){   
-            if (par == 1 ){time += 5;
-            } else {time -= 5;
+            if (par == 1 ){time += 1;
+            } else {time -= 1;
             }
+            if(time> 0){
             display.innerHTML = time + " : 00";
+            } else {
+                alert("請至少專注一分鐘！");
+                time += 1;
+            }
             console.log(time);
+            
+
         }
+        
 
     //start-stop switch
         function toggle(){
@@ -169,11 +178,6 @@
                 }    
                 sec -= 1;
                 count ++;
-            
-            //stop countdown
-                if (min + sec == 0) {
-                    clearInterval(timeoutId);
-                }
 
             //display remaining time
                 if(sec < 10){
@@ -185,18 +189,28 @@
             //change color
                 col = 120 * (1- count/duration);
                 document.documentElement.style.setProperty('--tomatoColor', 'hsl(' + col +',100%,50%)');
+            
+            //stop countdown
+            if (min + sec == 0) {
+                    clearInterval(timeoutId);
+                    display.innerHTML = "Here's your tomato!";
+                    document.getElementById("stop").innerHTML="Try again!";
+                    //document.getElementById("restart").classList.toggle("hide");
+
+                }                  
             }
 
         //reset timer, display, color
             document.getElementById("stop").onclick = function(){reset();}
             function reset() {
-                if (confirm("你確定要放棄嗎> <？???")) {
+                if (min + sec == 0 || confirm("你確定要放棄嗎?")) {
                     clearInterval(timeoutId);
                     time = 25;
                     display.innerHTML = time + " : 00";
                     document.documentElement.style.setProperty('--tomatoColor', 'hsl(120,100%,50%)');
                     console.log(time+' '+min+' '+sec+" reset");
                     toggle();
+                    document.getElementById("stop").innerHTML="Stop";
                 } else {}
             }
         }
